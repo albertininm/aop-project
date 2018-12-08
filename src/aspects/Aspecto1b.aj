@@ -1,12 +1,12 @@
 package aspects;
 
-import br.ufpe.cin.model.Conta.Conta;
+import br.ufpe.cin.model.Conta.ContaAbstrata;
 
 public aspect Aspecto1b {
 
-	before(Conta conta, double x): call(void Conta+.debitar(double)) && target(conta) && args(x){
+	after(ContaAbstrata conta, double x): call(void ContaAbstrata+.debitar(double)) && target(conta) && args(x){
 	    if(conta.getSaldo() < 0) {
-	    	throw new IllegalArgumentException("Você está tentando debitar "+ x + " da conta " + conta.getNumero() + " cujo saldo atual é " + conta.getSaldo());
+	    	throw new IllegalArgumentException("O débito de  "+ x + " da conta " + conta.getNumero() + " fez com que o saldo ficasse negativo.\n Saldo atual é " + conta.getSaldo());
 	    }
     }
 }
