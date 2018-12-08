@@ -21,7 +21,7 @@ public class Programa {
 	public static void main(String[] args) {
 		Conta c = new Conta("123");
 		try {
-			c.creditar(10);
+			c.creditar(100);
 			c.debitar(12);
 			c.debitar(12);
 		}catch (IllegalArgumentException e) {
